@@ -1,10 +1,9 @@
 {
-    "name": "Integration blueprint",
+    "name": "Amphiro Digital Hand Shower BLE",
     "hacs": "1.6.0",
     "domains": [
-        "binary_sensor",
-        "sensor",
-        "switch"
+        "bluetooth"
     ],
-    "homeassistant": "0.118.0"
+    "render_readme":true,
+    "homeassistant": "2022.12.0"
 }
