@@ -35,10 +35,10 @@ from .const import DOMAIN
 SENSOR_DESCRIPTIONS: dict[
     tuple[SSDSensorDeviceClass, Units | None], SensorEntityDescription
 ] = {
-    (SSDSensorDeviceClass.POWER,  Units.POWER_KILO_WATT): SensorEntityDescription(
-        key=f"{SSDSensorDeviceClass.POWER}_{Units.POWER_KILO_WATT}",
-        device_class=SensorDeviceClass.POWER,
-        native_unit_of_measurement=const.POWER_KILO_WATT,
+    (SSDSensorDeviceClass.ENERGY,  Units.ENERGY_KILO_WATT_HOUR): SensorEntityDescription(
+        key=f"{SSDSensorDeviceClass.ENERGY}_{Units.ENERGY_KILO_WATT_HOUR}",
+        device_class=SensorDeviceClass.ENERGY,
+        native_unit_of_measurement=const.ENERGY_KILO_WATT_HOUR,
         state_class=SensorStateClass.TOTAL,
     ),
     (DeviceClass.COUNT, None): SensorEntityDescription(
