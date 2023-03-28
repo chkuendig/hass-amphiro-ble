@@ -19,7 +19,7 @@ def _convert_advertisement(
     """
     Convert a Amphiro advertisement to a dictionary of sensor values.
     """
-    if raw_data[-4:] == b"\x41\x00\x00\x00":  # Last 3 bytes Seems to be static "0x410000"
+    if raw_data[-3:] == b"\x00\x00\x00":  # Last 3 bytes Seems to be static "0x410000"
         val = raw_data.hex()
 
         # https://gitlab.com/baze/amphiro_oras_bluetooth_shower_hub/-/blob/main/read_Ampiro_shower.py#L109
