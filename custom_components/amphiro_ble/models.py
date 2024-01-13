@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 import struct
+from homeassistant.const import UnitOfTemperature, UnitOfTime
 
 from bluetooth_data_tools import short_address
 from bluetooth_sensor_state_data import BluetoothData
@@ -61,9 +62,9 @@ def _convert_advertisement(
         data["a"]=a
         data = {
             (DeviceClass.COUNT,None):startCounter,
-            (DeviceClass.TEMPERATURE, Units.TEMP_CELSIUS): temp,
+            (DeviceClass.TEMPERATURE, UnitOfTemperature.CELSIUS): temp,
             (DeviceClass.POWER, Units.POWER_KILO_WATT): kwatts,
-            (DeviceClass.TIME, Units.TIME_SECONDS):secs,
+            (DeviceClass.TIME, UnitOfTime.SECONDS):secs,
             (DeviceClass.VOLUME_DISPENSED,Units.VOLUME_LITERS):round( pulses/2560, 2)
        
         }

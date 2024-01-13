@@ -11,8 +11,8 @@ from sensor_state_data import (
     SensorUpdate,
     Units,
 )
-
-from homeassistant import config_entries, const
+from homeassistant.const import UnitOfTemperature, UnitOfTime, ENERGY_KILO_WATT_HOUR, VOLUME_LITERS
+from homeassistant import config_entries
 from homeassistant.components.bluetooth.passive_update_processor import (
     PassiveBluetoothDataProcessor,
     PassiveBluetoothDataUpdate,
@@ -38,7 +38,7 @@ SENSOR_DESCRIPTIONS: dict[
     (SSDSensorDeviceClass.ENERGY,  Units.ENERGY_KILO_WATT_HOUR): SensorEntityDescription(
         key=f"{SSDSensorDeviceClass.ENERGY}_{Units.ENERGY_KILO_WATT_HOUR}",
         device_class=SensorDeviceClass.ENERGY,
-        native_unit_of_measurement=const.ENERGY_KILO_WATT_HOUR,
+        native_unit_of_measurement=ENERGY_KILO_WATT_HOUR,
         state_class=SensorStateClass.TOTAL,
     ),
     (DeviceClass.COUNT, None): SensorEntityDescription(
@@ -50,19 +50,19 @@ SENSOR_DESCRIPTIONS: dict[
     (DeviceClass.VOLUME_DISPENSED, Units.VOLUME_LITERS): SensorEntityDescription(
         key=f"{DeviceClass.VOLUME_DISPENSED}_{Units.VOLUME_LITERS}",
         device_class=DeviceClass.VOLUME_DISPENSED,
-        native_unit_of_measurement=const.VOLUME_LITERS,
+        native_unit_of_measurement=VOLUME_LITERS,
         state_class=SensorStateClass.TOTAL,
     ),
-    (SSDSensorDeviceClass.TEMPERATURE, Units.TEMP_CELSIUS): SensorEntityDescription(
-        key=f"{SSDSensorDeviceClass.TEMPERATURE}_{Units.TEMP_CELSIUS}",
+    (SSDSensorDeviceClass.TEMPERATURE, UnitOfTemperature.CELSIUS): SensorEntityDescription(
+        key=f"{SSDSensorDeviceClass.TEMPERATURE}_{UnitOfTemperature.CELSIUS}",
         device_class=SensorDeviceClass.TEMPERATURE,
-        native_unit_of_measurement=const.TEMP_CELSIUS,
+        native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         state_class=SensorStateClass.MEASUREMENT,
     ),
-    (DeviceClass.TIME, Units.TIME_SECONDS): SensorEntityDescription(
-        key=f"{DeviceClass.TIME}_{Units.TIME_SECONDS}",
+    (DeviceClass.TIME, UnitOfTime.SECONDS): SensorEntityDescription(
+        key=f"{DeviceClass.TIME}_{UnitOfTime.SECONDS}",
         device_class=DeviceClass.TIME,
-        native_unit_of_measurement=const.TIME_SECONDS,
+        native_unit_of_measurement=UnitOfTime.SECONDS,
         state_class=SensorStateClass.TOTAL,
     ),
 }
