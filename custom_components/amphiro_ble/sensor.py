@@ -11,7 +11,7 @@ from sensor_state_data import (
     SensorUpdate,
     Units,
 )
-from homeassistant.const import UnitOfTemperature, UnitOfTime, ENERGY_KILO_WATT_HOUR, VOLUME_LITERS
+from homeassistant.const import UnitOfTemperature, UnitOfTime, UnitOfEnergy, UnitOfVolume
 from homeassistant import config_entries
 from homeassistant.components.bluetooth.passive_update_processor import (
     PassiveBluetoothDataProcessor,
@@ -35,10 +35,10 @@ from .const import DOMAIN
 SENSOR_DESCRIPTIONS: dict[
     tuple[SSDSensorDeviceClass, Units | None], SensorEntityDescription
 ] = {
-    (SSDSensorDeviceClass.ENERGY,  Units.ENERGY_KILO_WATT_HOUR): SensorEntityDescription(
-        key=f"{SSDSensorDeviceClass.ENERGY}_{Units.ENERGY_KILO_WATT_HOUR}",
+    (SSDSensorDeviceClass.ENERGY,  UnitOfEnergy.KILO_WATT_HOUR): SensorEntityDescription(
+        key=f"{SSDSensorDeviceClass.ENERGY}_{UnitOfEnergy.KILO_WATT_HOUR}",
         device_class=SensorDeviceClass.ENERGY,
-        native_unit_of_measurement=ENERGY_KILO_WATT_HOUR,
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         state_class=SensorStateClass.TOTAL,
     ),
     (DeviceClass.COUNT, None): SensorEntityDescription(
@@ -47,10 +47,10 @@ SENSOR_DESCRIPTIONS: dict[
         native_unit_of_measurement=None,
         state_class=SensorStateClass.TOTAL_INCREASING,
     ),
-    (DeviceClass.VOLUME_DISPENSED, Units.VOLUME_LITERS): SensorEntityDescription(
-        key=f"{DeviceClass.VOLUME_DISPENSED}_{Units.VOLUME_LITERS}",
+    (DeviceClass.VOLUME_DISPENSED, UnitOfVolume.LITERS): SensorEntityDescription(
+        key=f"{DeviceClass.VOLUME_DISPENSED}_{UnitOfVolume.LITERS}",
         device_class=DeviceClass.VOLUME_DISPENSED,
-        native_unit_of_measurement=VOLUME_LITERS,
+        native_unit_of_measurement=UnitOfVolume.LITERS,
         state_class=SensorStateClass.TOTAL,
     ),
     (SSDSensorDeviceClass.TEMPERATURE, UnitOfTemperature.CELSIUS): SensorEntityDescription(
