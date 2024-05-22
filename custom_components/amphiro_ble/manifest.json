@@ -1,21 +1,21 @@
 {
   "domain": "amphiro_ble",
   "name": "amphiro BLE",
-  "config_flow": true,
-  "documentation": "https://github.com/chkuendig/hass-amphiro-ble",
   "bluetooth": [
     {
       "connectable": false,
       "manufacturer_id": 64238
     }
   ],
-  "version": "0.1.0",
-  "dependencies": [
-    "bluetooth"
-  ],
   "codeowners": [
     "@chkuendig"
   ],
+  "config_flow": true,
+  "dependencies": [
+    "bluetooth"
+  ],
+  "documentation": "https://github.com/chkuendig/hass-amphiro-ble",
+  "iot_class": "local_push",
   "issue_tracker": "https://github.com/chkuendig/hass-amphiro-ble/issues",
-  "iot_class": "local_push"
+  "version": "0.1.0"
 }
