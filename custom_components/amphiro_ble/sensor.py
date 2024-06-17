@@ -129,7 +129,7 @@ async def async_setup_entry(
 
 class AmphiroBluetoothSensorEntity(
     PassiveBluetoothProcessorEntity[
-        PassiveBluetoothDataProcessor[Optional[Union[float, int]]]
+        PassiveBluetoothDataProcessor[Optional[Union[float, int]],1]
     ],
     SensorEntity,
 ):
