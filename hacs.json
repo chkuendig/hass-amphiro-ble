@@ -2,5 +2,5 @@
     "name": "Amphiro Digital Hand Shower BLE",
     "hacs": "1.6.0",
     "render_readme":true,
-    "homeassistant": "2022.12.0"
+    "homeassistant": "2024.6.0"
 }
