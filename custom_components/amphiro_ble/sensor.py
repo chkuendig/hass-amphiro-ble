@@ -1,8 +1,6 @@
 """Support for Amphiro sensors."""
 from __future__ import annotations
 
-from typing import Optional, Union
-
 from sensor_state_data import (
     DeviceKey,
     DeviceClass,
@@ -129,7 +127,7 @@ async def async_setup_entry(
 
 class AmphiroBluetoothSensorEntity(
     PassiveBluetoothProcessorEntity[
-        PassiveBluetoothDataProcessor[Optional[Union[float, int]]]
+        PassiveBluetoothDataProcessor[float | int | None, SensorUpdate]
     ],
     SensorEntity,
 ):

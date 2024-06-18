@@ -63,7 +63,7 @@ def _convert_advertisement(
         data = {
             (DeviceClass.COUNT,None):startCounter,
             (DeviceClass.TEMPERATURE, UnitOfTemperature.CELSIUS): temp,
-            (DeviceClass.POWER, Units.POWER_KILO_WATT): kwatts,
+            (DeviceClass.ENERGY, Units.ENERGY_KILO_WATT_HOUR): kwatts,
             (DeviceClass.TIME, UnitOfTime.SECONDS):secs,
             (DeviceClass.VOLUME_DISPENSED,Units.VOLUME_LITERS):round( pulses/2560, 2)
        
