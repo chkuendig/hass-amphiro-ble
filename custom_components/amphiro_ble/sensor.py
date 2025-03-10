@@ -49,7 +49,7 @@ SENSOR_DESCRIPTIONS: dict[
         key=f"{DeviceClass.VOLUME_DISPENSED}_{UnitOfVolume.LITERS}",
         device_class=DeviceClass.VOLUME_DISPENSED,
         native_unit_of_measurement=UnitOfVolume.LITERS,
-        state_class=SensorStateClass.TOTAL,
+        state_class=SensorStateClass.TOTAL_INCREASING,
     ),
     (SSDSensorDeviceClass.TEMPERATURE, UnitOfTemperature.CELSIUS): SensorEntityDescription(
         key=f"{SSDSensorDeviceClass.TEMPERATURE}_{UnitOfTemperature.CELSIUS}",
@@ -61,7 +61,7 @@ SENSOR_DESCRIPTIONS: dict[
         key=f"{DeviceClass.TIME}_{UnitOfTime.SECONDS}",
         device_class=DeviceClass.TIME,
         native_unit_of_measurement=UnitOfTime.SECONDS,
-        state_class=SensorStateClass.TOTAL,
+        state_class=SensorStateClass.TOTAL_INCREASING,
     ),
 }
 
