@@ -15,6 +15,7 @@
     "bluetooth"
   ],
   "documentation": "https://github.com/chkuendig/hass-amphiro-ble",
+  "integration_type": "device",
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/chkuendig/hass-amphiro-ble/issues",
   "version": "0.1.0"

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import logging
-import struct
 from homeassistant.const import UnitOfTemperature, UnitOfTime
 
 from bluetooth_data_tools import short_address
@@ -26,47 +25,48 @@ def _convert_advertisement(
         # https://gitlab.com/baze/amphiro_oras_bluetooth_shower_hub/-/blob/main/read_Ampiro_shower.py#L109
         # Construct v1 containing spaced out representation of the raw data
         v1 = ""
-        startCounter = int( val[2:6],16 )
+        startCounter = int(val[2:6], 16)
         v1 += str(val)[0:8] + " "
 
-        secs = int( val[6:10],16 )
-        v1 +=str(val)[8:12] + " "
+        secs = int(val[6:10], 16)
+        v1 += str(val)[8:12] + " "
 
-        v1 +=str(val)[12:14] + " "
+        v1 += str(val)[12:14] + " "
 
-        a = int( val[12:16],16 )
-        v1 +=str(val)[14:18] + " "
+        a = int(val[12:16], 16)
+        v1 += str(val)[14:18] + " "
 
-        pulses = int( val[16:22],16 )
-        v1 +=str(val)[18:24] + " "
+        pulses = int(val[16:22], 16)
+        v1 += str(val)[18:24] + " "
 
-        temp = int( val[22:24],16 )
-        v1 +=str(val)[24:26] + " "
+        temp = int(val[22:24], 16)
+        v1 += str(val)[24:26] + " "
 
-        kwatts = int( val[24:28],16 )/100
-        v1 +=str(val)[26:30] + " "
+        kwatts = int(val[24:28], 16) / 100
+        v1 += str(val)[26:30] + " "
 
         # Constant 19?
-        v1 +=str(val)[30:32] + " "
+        v1 += str(val)[30:32] + " "
 
-        v1 +=str(val)[32:]
+        v1 += str(val)[32:]
 
-        data = {};
-        data["session"]=startCounter
-        data["second"]=secs
-        data["temp"]=temp
-        data["kwatts"]=kwatts
-        data["pulses"]=pulses
-        data["liters"]=round( pulses/2560, 2)
-        data["liters_rounded"]=round( pulses/2560 )
-        data["a"]=a
+        data = {}
+        data["session"] = startCounter
+        data["second"] = secs
+        data["temp"] = temp
+        data["kwatts"] = kwatts
+        data["pulses"] = pulses
+        data["liters"] = round(pulses / 2560, 2)
+        data["liters_rounded"] = round(pulses / 2560)
+        data["a"] = a
         data = {
-            (DeviceClass.COUNT,None):startCounter,
+            (DeviceClass.COUNT, None): startCounter,
             (DeviceClass.TEMPERATURE, UnitOfTemperature.CELSIUS): temp,
             (DeviceClass.ENERGY, Units.ENERGY_KILO_WATT_HOUR): kwatts,
-            (DeviceClass.TIME, UnitOfTime.SECONDS):secs,
-            (DeviceClass.VOLUME_DISPENSED,Units.VOLUME_LITERS):round( pulses/2560, 2)
-       
+            (DeviceClass.TIME, UnitOfTime.SECONDS): secs,
+            (DeviceClass.VOLUME_DISPENSED, Units.VOLUME_LITERS): round(
+                pulses / 2560, 2
+            ),
         }
         _LOGGER.debug(v1)
         return data

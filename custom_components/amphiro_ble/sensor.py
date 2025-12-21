@@ -1,4 +1,5 @@
 """Support for Amphiro sensors."""
+
 from __future__ import annotations
 
 from sensor_state_data import (
@@ -9,7 +10,12 @@ from sensor_state_data import (
     SensorUpdate,
     Units,
 )
-from homeassistant.const import UnitOfTemperature, UnitOfTime, UnitOfEnergy, UnitOfVolume
+from homeassistant.const import (
+    UnitOfTemperature,
+    UnitOfTime,
+    UnitOfEnergy,
+    UnitOfVolume,
+)
 from homeassistant import config_entries
 from homeassistant.components.bluetooth.passive_update_processor import (
     PassiveBluetoothDataProcessor,
@@ -33,7 +39,7 @@ from .const import DOMAIN
 SENSOR_DESCRIPTIONS: dict[
     tuple[SSDSensorDeviceClass, Units | None], SensorEntityDescription
 ] = {
-    (SSDSensorDeviceClass.ENERGY,  UnitOfEnergy.KILO_WATT_HOUR): SensorEntityDescription(
+    (SSDSensorDeviceClass.ENERGY, UnitOfEnergy.KILO_WATT_HOUR): SensorEntityDescription(
         key=f"{SSDSensorDeviceClass.ENERGY}_{UnitOfEnergy.KILO_WATT_HOUR}",
         device_class=SensorDeviceClass.ENERGY,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -51,7 +57,10 @@ SENSOR_DESCRIPTIONS: dict[
         native_unit_of_measurement=UnitOfVolume.LITERS,
         state_class=SensorStateClass.TOTAL_INCREASING,
     ),
-    (SSDSensorDeviceClass.TEMPERATURE, UnitOfTemperature.CELSIUS): SensorEntityDescription(
+    (
+        SSDSensorDeviceClass.TEMPERATURE,
+        UnitOfTemperature.CELSIUS,
+    ): SensorEntityDescription(
         key=f"{SSDSensorDeviceClass.TEMPERATURE}_{UnitOfTemperature.CELSIUS}",
         device_class=SensorDeviceClass.TEMPERATURE,
         native_unit_of_measurement=UnitOfTemperature.CELSIUS,
@@ -122,7 +131,9 @@ async def async_setup_entry(
             AmphiroBluetoothSensorEntity, async_add_entities
         )
     )
-    entry.async_on_unload(coordinator.async_register_processor(processor))
+    entry.async_on_unload(
+        coordinator.async_register_processor(processor, SensorEntityDescription)
+    )
 
 
 class AmphiroBluetoothSensorEntity(
