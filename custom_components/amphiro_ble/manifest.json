@@ -18,5 +18,5 @@
   "integration_type": "device",
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/chkuendig/hass-amphiro-ble/issues",
-  "version": "0.1.0"
+  "version": "2024.6.4"
 }
